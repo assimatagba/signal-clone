@@ -10,7 +10,7 @@ const RegisterScreen = ({ navigation }) => {
     const [ name, setName ] = useState("")
     const [ email, setEmail ] = useState("")
     const [ password, setPassword ] = useState("")
-    const [ imgUrl, setImgUrl ] = useState("")
+    const [ imageUrl, setImgUrl ] = useState("")
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -25,7 +25,8 @@ const RegisterScreen = ({ navigation }) => {
                 authUser.user.updateProfile({
                     displayName: name,
                     photoURL: 
-                        imgUrl || "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
+                        imageUrl || 
+                        "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
                 });
             })
             .catch((error) => alert(error.message)) 
@@ -48,7 +49,7 @@ const RegisterScreen = ({ navigation }) => {
                     type='text'
                     autoFocus
                     value={name}
-                    onChange={(text) => setName(text)}
+                    onChangeText={(text) => setName(text)}
                 />
                 <Input 
                     placeholder="Email"
@@ -67,7 +68,7 @@ const RegisterScreen = ({ navigation }) => {
                 <Input 
                     placeholder="Profile Picture url (optional)"
                     type='text'
-                    value={imgUrl}
+                    value={imageUrl}
                     onChangeText={(text) => setImgUrl(text)}
                     onSubmitEditing={register}
                 />
